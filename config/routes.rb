@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  root "boards#index"
+
+  
   get("/", { :controller => "boards", :action => "index" })
 
   # Routes for the Post resource:
