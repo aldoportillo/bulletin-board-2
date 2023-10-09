@@ -12,6 +12,14 @@ task({ :sample_data => :environment }) do
     end
   end
   
+  usernames = ["alice", "bob", "carol", "dave", "eve"]
+
+  usernames.each do |username|
+    user = User.new
+    user.email = "#{username}@example.com"
+    user.password = "password"
+  end
+
   5.times do
     board = Board.new
     board.name = Faker::Address.community
