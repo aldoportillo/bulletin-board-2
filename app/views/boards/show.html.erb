@@ -3,8 +3,10 @@
     <h1>
       <%= @the_board.name %>
     </h1>
+    <p>Owner: <%= @the_board.user.email %></p>
   </div>
 </div>
+
 
 <hr>
 
@@ -60,7 +62,14 @@
 
   <% @active_posts.each do |a_post| %>
     <tr>
-      <td><%= a_post.title %></td>
+      <td>
+        <%= a_post.title %> 
+        <% if current_user %>
+        <% if current_user.id == a_post.user_id %>
+          <a href="/delete_post/<%= a_post.id%>">Delete post</a>
+        <% end %>
+        <% end %>
+      </td>
       <td><%= a_post.body %></td>
       <td><%= a_post.created_at.strftime("%b %e, %Y") %></td>
       <td><%= a_post.expires_on.strftime("%b %e, %Y") %></td>
@@ -80,7 +89,14 @@
 
   <% @expired_posts.each do |a_post| %>
     <tr>
-      <td><%= a_post.title %></td>
+      <td>
+        <%= a_post.title %> 
+        <% if current_user %>
+        <% if current_user.id == a_post.user_id %>
+          <a href="/delete_post/<%= a_post.id%>">Delete post</a>
+        <% end %>
+        <% end %>
+      </td>
       <td><%= a_post.body %></td>
       <td><%= a_post.created_at.strftime("%b %e, %Y") %></td>
       <td><%= a_post.expires_on.strftime("%b %e, %Y") %></td>
